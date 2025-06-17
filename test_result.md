@@ -137,15 +137,18 @@ backend:
         
   - task: "Project Task CRUD API endpoints"
     implemented: true
-    working: false
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "main"
         comment: "Implemented ProjectTask model with CRUD endpoints for project-specific tasks"
+      - working: true
+        agent: "testing"
+        comment: "Successfully tested all Project Task CRUD operations. Create, read, update, and delete operations for tasks within projects are working correctly. Project tasks can be created with all required fields and are properly associated with their parent project."
         
   - task: "Dashboard Statistics API"
     implemented: true
