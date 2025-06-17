@@ -1,38 +1,221 @@
-.App {
-    text-align: center;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom CSS classes following design principles */
+
+/* Stats Cards */
+.stats-card {
+  @apply transform transition-all duration-300 hover:-translate-y-1;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.stats-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.stats-card-total {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.stats-card-completed {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
 }
 
-.App-link {
-    color: #61dafb;
+.stats-card-progress {
+  background: linear-gradient(135deg, #3b82f6 0%, #0891b2 100%);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Navigation Items */
+.nav-item {
+  @apply transition-all duration-300;
+}
+
+.nav-item-active {
+  @apply bg-purple-500 text-white shadow-lg;
+  transform: translateY(-1px);
+}
+
+.nav-item-inactive {
+  @apply text-gray-700;
+}
+
+.nav-item-inactive:hover {
+  @apply text-purple-600 bg-purple-50;
+  transform: translateY(-1px);
+}
+
+/* Card Hover Effects */
+.card-hover {
+  @apply transition-all duration-300;
+}
+
+.card-hover:hover {
+  @apply transform -translate-y-1;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-purple-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-purple-400;
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+  @apply bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg;
+}
+
+.btn-primary:hover {
+  @apply transform -translate-y-1;
+  box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+}
+
+.btn-secondary {
+  @apply bg-white hover:bg-gray-50 text-gray-700 px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-lg border border-gray-200;
+}
+
+.btn-secondary:hover {
+  @apply transform -translate-y-1;
+}
+
+/* Form Elements */
+.form-input {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300;
+}
+
+.form-select {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300;
+}
+
+/* Priority and Status Badges */
+.badge {
+  @apply px-3 py-1 rounded-full text-xs font-medium;
+}
+
+.badge-urgent {
+  @apply bg-red-100 text-red-800;
+}
+
+.badge-high {
+  @apply bg-orange-100 text-orange-800;
+}
+
+.badge-medium {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.badge-low {
+  @apply bg-green-100 text-green-800;
+}
+
+.badge-todo {
+  @apply bg-gray-100 text-gray-800;
+}
+
+.badge-progress {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.badge-done {
+  @apply bg-green-100 text-green-800;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  @apply bg-white rounded-2xl p-6 w-full max-w-md mx-4 shadow-2xl;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Kanban Board Styles (for future use) */
+.kanban-column {
+  @apply bg-gray-100 rounded-2xl p-4 min-h-96;
+}
+
+.kanban-card {
+  @apply bg-white rounded-xl p-4 mb-3 shadow-sm hover:shadow-md transition-all duration-300 cursor-grab;
+}
+
+.kanban-card:active {
+  @apply cursor-grabbing;
+}
+
+/* Empty State */
+.empty-state {
+  @apply text-center py-12;
+}
+
+.empty-state-icon {
+  @apply w-16 h-16 text-gray-300 mx-auto mb-4;
+}
+
+.empty-state-title {
+  @apply text-lg font-medium text-gray-900 mb-2;
+}
+
+.empty-state-description {
+  @apply text-gray-600 mb-4;
+}
+
+/* Responsive Design Utilities */
+@media (max-width: 768px) {
+  .mobile-full {
+    @apply w-full;
+  }
+  
+  .mobile-stack {
+    @apply flex-col space-y-4 space-x-0;
+  }
+}
+
+/* Dark mode support (for future enhancement) */
+@media (prefers-color-scheme: dark) {
+  /* Dark mode styles would go here */
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }
