@@ -152,15 +152,18 @@ backend:
         
   - task: "Dashboard Statistics API"
     implemented: true
-    working: false
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "main"
         comment: "Implemented dashboard stats endpoint with total_tasks, completed_tasks, in_progress_tasks, todo_tasks, overdue_tasks, total_projects"
+      - working: true
+        agent: "testing"
+        comment: "Successfully tested Dashboard Statistics API. The endpoint correctly returns all required statistics including task counts by status, overdue tasks, and project counts. The overdue task detection is working properly, and statistics update correctly when task statuses change."
 
 frontend:
   - task: "Dashboard with Statistics Cards"
